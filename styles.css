@@ -1,0 +1,431 @@
+/* ==========================================================
+   styles.css  -  Resume website for Vwama
+   Theme: modern, minimal, warm neutrals.
+   Uses only what was taught in Modules 4 and 5.
+
+   Colour palette (hex codes):
+     Off-white  #faf8f4   page background
+     Mocha      #4a3328   main text colour (dark brown)
+     Soft mocha #7a6355   secondary text
+     Blush      #e6c3bd   lines, hover fills
+     Ivory      #f3ecd9   soft fills (project cards, table headers)
+     Oak        #b08a5f   lines, hover colour
+     Sand       #dccbb0   thin divider lines
+     Olive      #6f7244   links, buttons
+     Taupe      #a89a8a   form borders, lines
+   ========================================================== */
+
+
+/* ---------- 1. GLOBAL STYLES ---------- */
+
+/* Universal selector: remove default margin/padding from every element,
+   so all the spacing below is deliberate. */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Font set once on html and inherited (Module 4: Website Styling) */
+html {
+    font-family: "Lora", "Times New Roman", serif;     /* font stack */
+    font-size: 100%;
+}
+
+body {
+    background-color: #faf8f4;
+    color: #4a3328;
+    line-height: 1.7;
+}
+
+/* Formal serif for all headings */
+h1, h2, h3 {
+    line-height: 1.3;
+    font-family: "Playfair Display", "Times New Roman", serif;
+    font-weight: 500;
+    color: #4a3328;
+}
+
+p {
+    margin-bottom: 0.8rem;
+}
+
+strong {
+    font-weight: 600;
+}
+
+a {
+    color: #6f7244;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Pseudo-element: colour of highlighted text */
+::selection {
+    background-color: #e6c3bd;
+    color: #4a3328;
+}
+
+/* The <hr> lines become thin sand dividers between sections */
+hr {
+    border: none;
+    border-top: 1px solid #dccbb0;
+}
+
+/* Adjacent-sibling selector: the first line, right after the header,
+   is a thicker blush line */
+header + hr {
+    border-top: 5px solid #e6c3bd;
+}
+
+
+/* ---------- 2. HEADER (CSS Grid) ---------- */
+
+/* Two columns: portrait photo on the left, text on the right */
+header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 3rem 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 3rem;
+    align-items: center;
+}
+
+/* Portrait (rectangle, taller than wide). It spans all 3 text rows. */
+header img {
+    grid-row: 1 / 4;
+    width: 200px;
+    height: 270px;
+    object-fit: cover;                    /* crops the photo instead of squashing it (looked up on MDN) */
+    padding: 8px;
+    background-color: #f3ecd9;
+    border: 1px solid #dccbb0;
+    border-bottom: 5px solid #b08a5f;
+}
+
+header h1 {
+    grid-column: 2;
+    font-size: 3.4rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    align-self: end;
+    margin-bottom: 0.5rem;
+}
+
+header > p {                              /* child selector: only the tagline */
+    grid-column: 2;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #7a6355;
+    margin-bottom: 1.2rem;
+}
+
+header nav {
+    grid-column: 2;
+    align-self: start;
+}
+
+
+/* ---------- 3. NAVIGATION ---------- */
+
+/* The "|" characters in the HTML sit directly inside <nav>. Giving the nav
+   the same colour as the background hides them, while the links
+   get their own colour below. */
+nav {
+    color: #faf8f4;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    margin: 0.25rem 0.15rem;
+    color: #4a3328;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #e6c3bd;     /* each link gets a coloured line */
+}
+
+/* nth-of-type with a formula (like 7n in the lesson): the lines cycle
+   through blush, sand, oak, olive, taupe */
+nav a:nth-of-type(5n+1) { border-bottom-color: #e6c3bd; }
+nav a:nth-of-type(5n+2) { border-bottom-color: #dccbb0; }
+nav a:nth-of-type(5n+3) { border-bottom-color: #b08a5f; }
+nav a:nth-of-type(5n+4) { border-bottom-color: #6f7244; }
+nav a:nth-of-type(5n+5) { border-bottom-color: #a89a8a; }
+
+nav a:hover {
+    background-color: #f3ecd9;
+    text-decoration: none;
+}
+
+nav a:active {
+    background-color: #dccbb0;
+}
+
+
+/* ---------- 4. MAIN CONTENT ---------- */
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+main section {
+    padding: 3rem 0;
+}
+
+h2 {
+    display: inline-block;                /* so the line is only as wide as the text */
+    font-size: 2rem;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.8rem;
+    border-bottom: 4px solid #e6c3bd;
+}
+
+/* The underline colour changes from section to section */
+main section:nth-of-type(5n+1) h2 { border-bottom-color: #e6c3bd; }
+main section:nth-of-type(5n+2) h2 { border-bottom-color: #dccbb0; }
+main section:nth-of-type(5n+3) h2 { border-bottom-color: #b08a5f; }
+main section:nth-of-type(5n+4) h2 { border-bottom-color: #6f7244; }
+main section:nth-of-type(5n+5) h2 { border-bottom-color: #a89a8a; }
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+}
+
+ul {
+    padding-left: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+/* Every <article> (a job, a degree, ...) gets a thin blush line on the left */
+article {
+    border-left: 2px solid #e6c3bd;
+    padding-left: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+article:hover {
+    border-left-color: #b08a5f;
+}
+
+/* Pseudo-element: a larger first letter in the summary */
+#summary p:first-of-type::first-letter {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    color: #b08a5f;
+}
+
+
+/* ---------- 5. FOUNDER + BOOKS IMAGE (Flexbox) ---------- */
+
+/* Class selector. Flexbox puts the text and the image side by side.
+   flex-wrap lets the image drop below the text on narrow screens. */
+.founder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.founder-text {
+    flex: 1 1 280px;                      /* flex grow, shrink and basis in one line */
+}
+
+/* Reserved space for the box photo: an ivory frame with a sand border */
+.books-box {
+    flex: 0 0 auto;
+    width: 240px;
+    min-height: 240px;
+    padding: 10px;
+    background-color: #f3ecd9;
+    border: 1px solid #dccbb0;
+    border-bottom: 5px solid #b08a5f;
+}
+
+.books-box img {
+    display: block;
+    width: 100%;
+}
+
+
+/* ---------- 6. PROJECTS (CSS Grid) ---------- */
+
+/* The grid is on the section itself: 2 equal columns and a gap */
+#projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+}
+
+/* The heading spans both columns (grid line 1 to the last line, -1) */
+#projects h2 {
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-bottom: 0.6rem;
+}
+
+#projects article {
+    margin-bottom: 0;
+    padding: 1.3rem;
+    background-color: #f3ecd9;
+    border: 1px solid #dccbb0;
+    border-top: 4px solid #e6c3bd;
+}
+
+#projects article:hover {
+    border-top-color: #b08a5f;
+}
+
+
+/* ---------- 7. TABLES ---------- */
+
+table {
+    width: 100%;
+    border: none;                         /* overrides border="1" in the HTML */
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f3ecd9;
+    text-align: left;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-bottom: 2px solid #b08a5f;
+}
+
+td {
+    padding: 0.8rem 1rem;
+    border: none;
+    border-bottom: 1px solid #dccbb0;
+}
+
+td:nth-of-type(1) {
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: #f3ecd9;
+}
+
+
+/* ---------- 8. CONTACT FORM ---------- */
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Attribute selectors: style inputs by type.
+   calc(): 100% minus padding (24px) and border (2px) = exact width */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: calc(100% - 26px);
+    max-width: 500px;
+    padding: 12px;
+    margin-top: 0.3rem;
+    background-color: #ffffff;
+    border: 1px solid #a89a8a;
+    border-radius: 2px;
+    font-family: inherit;                 /* inherit: use the page font */
+    font-size: 1rem;
+    color: #4a3328;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #6f7244;
+    outline: 3px solid #e6c3bd;
+}
+
+button {
+    background-color: #6f7244;
+    color: #faf8f4;
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    border-bottom: 4px solid #b08a5f;
+}
+
+button:hover {
+    background-color: #b08a5f;
+    border-bottom-color: #6f7244;
+}
+
+button:active {
+    background-color: #4a3328;
+}
+
+
+/* ---------- 9. FOOTER ---------- */
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #7a6355;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+
+/* ---------- 10. RESPONSIVE (media query) ---------- */
+
+/* At most 700px wide (phones, small tablets) */
+@media (max-width: 700px) {
+
+    /* header becomes one centred column */
+    header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 2.5rem;
+    }
+
+    header img {
+        grid-row: auto;
+        justify-self: center;
+        margin-bottom: 1.5rem;
+    }
+
+    header h1,
+    header > p,
+    header nav {
+        grid-column: 1;
+    }
+
+    header h1 {
+        font-size: 2.6rem;
+        align-self: auto;
+    }
+
+    #projects {
+        grid-template-columns: 1fr;
+    }
+
+    .books-box {
+        width: calc(100% - 22px);         /* full width minus padding (20px) and border (2px) */
+    }
+
+    th, td {
+        padding: 0.6rem 0.5rem;
+    }
+}
