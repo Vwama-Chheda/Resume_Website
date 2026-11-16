@@ -1,7 +1,6 @@
 /* ==========================================================
    styles.css  -  Resume website for Vwama
    Theme: modern, minimal, warm neutrals.
-   Uses only what was taught in Modules 4 and 5.
 
    Colour palette (hex codes):
      Off-white  #faf8f4   page background
@@ -131,9 +130,6 @@ header nav {
 
 /* ---------- 3. NAVIGATION ---------- */
 
-/* The "|" characters in the HTML sit directly inside <nav>. Giving the nav
-   the same colour as the background hides them, while the links
-   get their own colour below. */
 nav {
     color: #faf8f4;
 }
@@ -321,36 +317,6 @@ tbody tr:hover {
 }
 
 
-/* ---------- 8. CONTACT FORM ---------- */
-
-label {
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-/* Attribute selectors: style inputs by type.
-   calc(): 100% minus padding (24px) and border (2px) = exact width */
-input[type="text"],
-input[type="email"],
-textarea {
-    width: calc(100% - 26px);
-    max-width: 500px;
-    padding: 12px;
-    margin-top: 0.3rem;
-    background-color: #ffffff;
-    border: 1px solid #a89a8a;
-    border-radius: 2px;
-    font-family: inherit;                 /* inherit: use the page font */
-    font-size: 1rem;
-    color: #4a3328;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-color: #6f7244;
-    outline: 3px solid #e6c3bd;
-}
 
 button {
     background-color: #6f7244;
